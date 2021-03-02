@@ -1,0 +1,21 @@
+{
+  "name": "assignment05",
+  "version": "1.0.0",
+  "description": "working with node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "assignment",
+    "5",
+    "node",
+    "js"
+  ],
+  "author": "Charlie Say",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nedb": "^1.8.0"
+  }
+}

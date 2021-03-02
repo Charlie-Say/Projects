@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        height: 800px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>Discover</h3>
+
+    <div id="map"></div>
+    <script>
+
+    function initMap() {
+        var albany = {lat: 44.588301, lng: -123.112450};
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 4, center: albany});
+        var marker = new google.maps.Marker({position: albany, map: map});
+    }
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk0DbZjBsyO_kWKpUYdeFYQA3PX8WRwTY&callback=initMap">
+    </script>
+  </body>
+</html>
