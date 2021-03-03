@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=500">
+    <title>Find Your Location</title>
+
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+
+        <a id="logo" href="index.html"></a>
+
+        <nav>
+            <ul>
+                <li><a href="googlemaps.html">World Map</a></li>
+                <li><a href="googlemaps.html">Find Your Friends</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Find Your Location</h1>
+                <p>This is your location!</p>
+
+                <p>
+                latitude: <span id="latitude"></span>&deg;<br />
+                longitude: <span id="longitude"></span>&deg;
+                </p>
+                <label for="userName">ENTER YOUR NAME</label>
+                <input id="userName" value="" />
+
+                <button id="submit">submit</button>
+                <br>
+                <br>
+                <label for="userName">ENTER YOUR EMAIL</label>
+                <form id="signUpForm">
+                    <input type="email" id="emailField" required>
+                    <button id="okButton" disabled>OK</button>
+                </form>
+
+                <script type = "allUsers html">
+                    function user_locations() {
+                    window.location = "locations.html";
+                    }            
+                </script>
+
+
+                <script>
+                function user_locations() {
+                    window.location = "locations.html";
+                }
+                const signUpForm = document.getElementById('signUpForm');
+                const emailField = document.getElementById('emailField');
+                const okButton = document.getElementById('okButton');
+                
+                emailField.addEventListener('keyup', function (event) {
+                    isValidEmail = emailField.checkValidity();
+                
+                if ( isValidEmail ) {
+                    okButton.disabled = false;
+                } else {
+                    okButton.disabled = true;
+                    }
+                });
+                
+                okButton.addEventListener('click', function (event) {
+                    signUpForm.submit();
+                });
+                </script>
+
+
+                <script>
+                let lat, lon;
+                const button = document.getElementById('submit');
+                button.addEventListener('click', async event => {
+                    const userName = document.getElementById('userName').value;
+                    const data = { lat, lon, userName };
+                    const options = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                    };
+                    const response = await fetch('/api', options);
+                    const json = await response.json();
+                    console.log(json);
+                });
+
+                if ('geolocation' in navigator) {
+                    console.log('geolocation available');
+                    navigator.geolocation.getCurrentPosition(async position => {
+                    lat = position.coords.latitude;
+                    lon = position.coords.longitude;
+                    document.getElementById('latitude').textContent = lat;
+                    document.getElementById('longitude').textContent = lon;
+                    });
+                } else {
+                    console.log('geolocation not available');
+                }
+                </script>
+                <br>
+                <a href="locations.html">Location of all users</a>
+            </div>
+        </div>
+
+        <div class="site-section">
+        <div class="site-section-inside">
+
+            <div class="section-header">
+                <h2>Key Features</h2>
+            </div>
+
+            <div class="feature-box">
+                <img src="img/like.png" alt="Easy to Use">
+                <h5>Guess a number between 1 & 30</h5>
+                
+                <input type="text" id="myText" value="Enter your guess...">
+                <button onclick="GuessGame()">Enter</button>
+                <p id="print"></p>
+                <p id="print2"></p>
+                <script>
+                function GuessGame() {
+                    var x = document.getElementById("myText").value;
+                    if (x == 23) {
+                        document.getElementById("print").innerHTML = "That is correct!";
+                    } else {
+                        document.getElementById("print2").innerHTML = "Try again!";
+                    }
+
+                }
+                </script>
+            </div>
+
+            <div class="feature-box">
+                <img src="img/faces.png" alt="Fun to Use">
+                <h5>Make a list!</h5>
+
+                <input type="text" id="itemList" value="Item on list...">
+                <button onclick="MakeList()">Enter</button>
+                <p id="print3"></p>
+                <script>
+                var myList = [];
+                function MakeList() {
+                    var listItem = document.getElementById("itemList").value;
+                    myList.push(listItem);
+                    document.getElementById("print3").innerHTML = myList;
+                }
+                </script>
+            </div>
+
+            <div class="feature-box">
+                <img src="img/heart.png" alt="Fun to Use">
+                <h5>Actually Useless</h5>
+
+                <input type="text" id="amount" value="How many times?">
+                <button onclick="HowMany()">Enter</button>
+                <p id="print4"></p>
+                <script>
+                function HowMany() {
+                    var text = "";
+                    var i = 0;
+                    var theAmount = document.getElementById("amount").value;
+
+                    while (i < theAmount) {
+                    text += "<br>Printing " + i;
+                    i++;
+                    }
+                    document.getElementById("print4").innerHTML = text;
+                }
+                </script>
+            </div>
+
+        </div>
+        </div>
+
+        <div class="site-section site-section-secondary">
+        <div class="site-section-inside">
+
+
+
+        </div>
+        </div>
+
+    </main>
+
+
+</body>
+</html>
