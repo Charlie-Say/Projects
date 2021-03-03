@@ -1,0 +1,45 @@
+# File Name: main.py
+#:kivy 1.10.1
+
+
+# Create buttons for GUI program and make them
+# refer to the main.py file function when button is
+# pressed.
+
+# Charlie Say
+# CS 161 10:00AM
+
+# ___PSEUDO__
+# font size
+# size of button
+# color
+# background colors
+# position buttons in GUI
+# add text
+# on press: do something
+
+
+<Controller>:
+
+
+    GridLayout:
+        font_size: 40
+        size: 170,75
+        color: 0,1,0,1
+        background_color: 0,0,1,1
+
+
+        Button:
+            pos: 50,0
+            text: "Bitcoin"
+            on_press: root.bitcoin_click()
+
+        Button:
+            pos: 150,0
+            text: "Ethereum"
+            on_press: root.ethereum_click()
+        
+        Button:
+            pos: 250,0
+            text: "Litecoin"
+            on_press: root.litecoin_click()
